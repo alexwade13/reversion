@@ -12,11 +12,9 @@ function App() {
   const [planets, setPlanets] = useState({});
 
   async function fetchData() {
-    const res = await fetch("https://swapi.co/api/planets/4/");
-    res
-      .json()
-      .then(res => setPlanets(res))
-      .catch(err => setErrors(err));
+    const res = await fetch("https://api.openweathermap.org/data/2.5/weather?zip=98028,us&appid=709847967f5e54b97308c1b2cae4dee5");
+    res.json()
+      
   }
 
   useEffect(() => {
