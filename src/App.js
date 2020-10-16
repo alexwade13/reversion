@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import fetch from 'node-fetch';
+import _ from 'lodash'
 
 
 function App() {
@@ -19,20 +20,33 @@ function App() {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line
-  }, []);  
+  }, [zip]);  
 
   return (
     <div className="App">
       <header className="App-header">
-      <button onClick={() => setZip(10029)}>
-        Click me {zip}
-      </button>
-      <h1 className='text'>{(data?.name)}</h1>
-      <h1 className='text'>{(data?.weather?.[0]?.description)}</h1>
+      <div>
+        <span className="place">{(_.startCase(_.toLower(data?.name)))}</span>
+        <img src={"http://openweathermap.org/img/wn/"+ data?.weather?.[0]?.icon + ".png"}/>
+      </div>
+      <div className="description">{(_.startCase(_.toLower(data?.weather?.[0]?.description)))}</div>
       <h1 className='temp'>{Math.floor(data?.main?.temp - 273.15)}˚</h1>
       <div><span>{Math.floor(data?.main?.temp_min - 273.15)}˚</span> <span>{Math.floor(data?.main?.temp_max - 273.15)}˚</span></div>
-      
-      {JSON.stringify(data)}
+      <hr/>
+
+      <div>
+        <label for="input">Zip Code:</label>
+        <div>
+
+          <input id="input"></input>
+          <button className="myButton" onClick={() => {          
+            let input = document.getElementById("input").value
+            setZip(input)
+          }}>
+            Update
+          </button>
+        </div>
+      </div>
         
       </header>
       }
