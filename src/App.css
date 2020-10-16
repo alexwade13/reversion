@@ -35,3 +35,11 @@
     transform: rotate(360deg);
   }
 }
+
+.temp {
+  font-weight: 10
+}
+
+.text {
+  font-family: "Inicia", Times, serif;
+}
