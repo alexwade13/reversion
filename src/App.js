@@ -27,6 +27,7 @@ function App() {
       <header className="App-header">
       <div>
         <span className="place">{(_.startCase(_.toLower(data?.name)))}</span>
+      {/* eslint-disable-next-line*/}
         <img src={"http://openweathermap.org/img/wn/"+ data?.weather?.[0]?.icon + ".png"}/>
       </div>
       <div className="description">{(_.startCase(_.toLower(data?.weather?.[0]?.description)))}</div>
